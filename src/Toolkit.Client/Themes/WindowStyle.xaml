@@ -1,0 +1,143 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:widget="http://www.toolkit.org/library">
+
+  <ControlTemplate x:Key="CustomTopBarWindowTemplate" TargetType="Window">
+    <Border Padding="{TemplateBinding Padding}"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="{Binding Path=(widget:BorderAttached.CornerRadius), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+            SnapsToDevicePixels="True">
+      <Grid>
+        <Grid Margin="{TemplateBinding Padding}">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}, Mode=OneWay, Path=(WindowChrome.WindowChrome).CaptionHeight, FallbackValue=40}" />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+
+          <!--  工作区，跨两行  -->
+          <AdornerDecorator Grid.RowSpan="2">
+            <ContentPresenter ClipToBounds="True" />
+          </AdornerDecorator>
+
+          <!--  标题区  -->
+          <Grid WindowChrome.IsHitTestVisibleInChrome="True">
+            <ContentPresenter Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(widget:ContentAttached.AtachedContent)}" />
+
+            <StackPanel HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+              <Image Width="{Binding Source={x:Static SystemParameters.SmallIconHeight}}"
+                     Margin="15,0,0,0"
+                     Source="/Resources/favicon.ico" />
+              <TextBlock Margin="10,0,0,0"
+                         VerticalAlignment="Center"
+                         FontSize="13"
+                         Foreground="{StaticResource WindowForeground}"
+                         Text="{Binding DisplayName}" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+              <widget:CaptionButton WindowAction="Minimize" />
+              <widget:CaptionButton WindowAction="Normalize" />
+              <widget:CaptionButton WindowAction="Maximize" />
+              <widget:CaptionButton WindowAction="Close" />
+            </StackPanel>
+          </Grid>
+        </Grid>
+        <ResizeGrip x:Name="ResizeGrip"
+                    Grid.Row="1"
+                    Width="10"
+                    Height="10"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    IsTabStop="False"
+                    Visibility="Collapsed"
+                    WindowChrome.ResizeGripDirection="BottomRight" />
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="WindowState" Value="Maximized">
+        <Setter Property="BorderThickness" Value="5" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <ControlTemplate x:Key="CustomWindowTemplate" TargetType="Window">
+    <Border x:Name="rootPanel"
+            Padding="{TemplateBinding BorderThickness}"
+            Background="{TemplateBinding BorderBrush}"
+            BorderBrush="Transparent">
+      <DockPanel>
+        <!--  窗体标题区  -->
+        <Grid Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(WindowChrome.WindowChrome).CaptionHeight}"
+              DockPanel.Dock="Top"
+              SnapsToDevicePixels="True">
+          <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Image Width="{Binding Source={x:Static SystemParameters.SmallIconWidth}}"
+                   Margin="5"
+                   VerticalAlignment="Center"
+                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"
+                   WindowChrome.IsHitTestVisibleInChrome="True" />
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="16"
+                       Foreground="White"
+                       Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}" />
+          </StackPanel>
+          <!--  附加功能按钮  -->
+          <DockPanel WindowChrome.IsHitTestVisibleInChrome="True">
+            <widget:CaptionButton WindowAction="Minimize" />
+            <widget:CaptionButton WindowAction="Normalize" />
+            <widget:CaptionButton WindowAction="Maximize" />
+            <widget:CaptionButton WindowAction="Close" />
+            <ContentPresenter Content="{Binding Path=(widget:ContentAttached.AtachedContent), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                              ContentStringFormat="{Binding Path=(widget:ContentAttached.AtachedContentStringFormat), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                              ContentTemplate="{Binding Path=(widget:ContentAttached.AtachedContentTemplate), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                              ContentTemplateSelector="{Binding Path=(widget:ContentAttached.AtachedContentTemplateSelector), RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+          </DockPanel>
+        </Grid>
+
+        <!--  窗体工作区  -->
+        <Border Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+          <AdornerDecorator KeyboardNavigation.IsTabStop="False">
+            <ContentPresenter />
+          </AdornerDecorator>
+        </Border>
+      </DockPanel>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="WindowState" Value="Maximized">
+        <Setter Property="BorderThickness" Value="8" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <Style x:Key="CustomWindow" TargetType="Window">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Height" Value="800" />
+    <Setter Property="Width" Value="1280" />
+    <Setter Property="MinHeight" Value="640" />
+    <Setter Property="MinWidth" Value="960" />
+    <Setter Property="Background" Value="{StaticResource WindowChromeBackground}" />
+    <Setter Property="Foreground" Value="{StaticResource WindowForeground}" />
+    <Setter Property="UseLayoutRounding" Value="True" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="WindowStyle" Value="None" />
+    <Setter Property="widget:BorderAttached.CornerRadius" Value="0" />
+    <Setter Property="Template" Value="{StaticResource CustomWindowTemplate}" />
+    <Setter Property="WindowChrome.WindowChrome">
+      <Setter.Value>
+        <WindowChrome CaptionHeight="40"
+                      GlassFrameThickness="0 0 0 -0.1"
+                      ResizeBorderThickness="5"
+                      UseAeroCaptionButtons="False" />
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

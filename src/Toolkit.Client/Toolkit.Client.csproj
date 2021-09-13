@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Utils\**" />
+		<EmbeddedResource Remove="Utils\**" />
+		<None Remove="Utils\**" />
+		<Page Remove="Utils\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\favicon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CalcBinding" Version="2.5.2" />
+		<PackageReference Include="Caliburn.Micro" Version="4.0.173" />
+		<PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
+		<PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Toolkit.Widget\Toolkit.Widget.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\favicon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Views\Toolbox\新文件夹\" />
+	</ItemGroup>
+
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties appsettings_1json__JsonSchema="" />
+		</VisualStudio>
+	</ProjectExtensions>
+</Project>

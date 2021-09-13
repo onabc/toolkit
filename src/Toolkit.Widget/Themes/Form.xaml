@@ -1,0 +1,125 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Toolkit.Widget.Controls"
+                    xmlns:converter="clr-namespace:Toolkit.Widget.Converters">
+
+  <converter:NullToValueConverter x:Key="NullToValueConverter" />
+  <converter:EmptyObjectToVisibilityConverter x:Key="EmptyObjectToVisibilityConverter" />
+  <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+  <Style TargetType="{x:Type controls:FormSeparator}">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type controls:FormSeparator}">
+          <Rectangle Height="1" VerticalAlignment="Bottom" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type controls:FormTitle}">
+    <Setter Property="FontSize" Value="16" />
+    <Setter Property="Padding" Value="12,0" />
+    <Setter Property="Foreground" Value="#FF333333" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type controls:FormTitle}">
+          <StackPanel Margin="{TemplateBinding Padding}">
+            <ContentPresenter x:Name="ContentPresenter"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}" />
+            <ContentPresenter Margin="0,2,0,0"
+                              Content="{TemplateBinding Description}"
+                              TextBlock.FontSize="12"
+                              TextBlock.Foreground="Gray"
+                              Visibility="{Binding Description, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource NullToValueConverter}, ConverterParameter=Collapsed, FallbackValue=Visible}" />
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type controls:FormItem}">
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Margin" Value="12,0" />
+    <Setter Property="Padding" Value="8,0,0,0" />
+    <Setter Property="LabelTemplate">
+      <Setter.Value>
+        <DataTemplate>
+          <TextBlock VerticalAlignment="Center" Text="{Binding}" />
+        </DataTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type controls:FormItem}">
+          <Grid x:Name="Root">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" SharedSizeGroup="Header" />
+              <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+              <TextBlock x:Name="IsRequiredMark"
+                         Grid.Column="2"
+                         Margin="0,0,2,0"
+                         VerticalAlignment="Center"
+                         Foreground="Red"
+                         Text="*"
+                         Visibility="{Binding IsRequired, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+              <ContentPresenter Content="{TemplateBinding Label}"
+                                ContentTemplate="{TemplateBinding LabelTemplate}"
+                                TextBlock.Foreground="#FF444444"
+                                Visibility="{Binding Label, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource EmptyObjectToVisibilityConverter}}" />
+            </StackPanel>
+            <ContentPresenter x:Name="ContentPresenter"
+                              Grid.Column="1"
+                              Margin="{TemplateBinding Padding}" />
+            <ContentPresenter Grid.Row="1"
+                              Grid.Column="1"
+                              Margin="{TemplateBinding Padding}"
+                              Content="{TemplateBinding Description}"
+                              TextBlock.Foreground="Gray"
+                              Visibility="{Binding Description, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource EmptyObjectToVisibilityConverter}}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type controls:Form}">
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Grid.IsSharedSizeScope" Value="True" />
+    <Setter Property="Padding" Value="0,12,0,12" />
+    <Setter Property="BorderBrush" Value="LightGray" />
+    <Setter Property="ItemsPanel">
+      <Setter.Value>
+        <ItemsPanelTemplate>
+          <controls:ExtendedStackPanel Spacing="12" />
+        </ItemsPanelTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type controls:Form}">
+          <Border Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+            <controls:ExtendedScrollViewer Grid.Row="1" Padding="{TemplateBinding Padding}">
+              <ItemsPresenter SnapsToDevicePixels="True" UseLayoutRounding="True" />
+            </controls:ExtendedScrollViewer>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

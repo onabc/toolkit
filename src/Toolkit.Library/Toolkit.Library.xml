@@ -1,0 +1,824 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Toolkit.Library</name>
+    </assembly>
+    <members>
+        <member name="T:Autofac.AutofacExtensions">
+            <summary>
+            Autofac扩展
+            </summary>
+        </member>
+        <member name="M:Autofac.AutofacExtensions.RegisterAssignableAssemblyTypes``1(Autofac.ContainerBuilder,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            用于辅助批量注册，筛选继承于指定类型的子类。
+            </summary>
+            <typeparam name="T">指定类型的基类，所有继承与它的子类都会被包含</typeparam>
+        </member>
+        <member name="M:Autofac.AutofacExtensions.RegisterSerilogFromConfiguration(Autofac.ContainerBuilder)">
+            <summary>
+            注册Serilog
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Autofac.AutofacExtensions.RegisterMediatR(Autofac.ContainerBuilder,System.Type[])">
+            <summary>
+            注册MediatR
+            </summary>
+            <param name="builder"></param>
+            <param name="notifications"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Extensions.EnumExtensions">
+            <summary>
+            枚举扩展
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.EnumExtensions.GetDescription(System.Enum)">
+            <summary>
+            获取description特性
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.EnumExtensions.GetLowerDescription(System.Enum)">
+            <summary>
+            获取description特性，以小写形式
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.EnumExtensions.GetCustomAttribute``1(System.Enum)">
+            <summary>
+            获取指定类型的特性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.EnumExtensions.GetField(System.Enum)">
+            <summary>
+            获取枚举值的FieldInfo
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.EnumExtensions.IsDefined(System.Enum)">
+            <summary>
+            检查是否为此枚举值定义了枚举常量
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.EnumExtensions.ToUInt64(System.Enum)">
+            <summary>
+            枚举值转换为UInt64类型
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.IEnumerableExtension.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            检测是否为空
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.IEnumerableExtension.Append``1(System.Collections.Generic.IEnumerable{``0},``0[])">
+            <summary>
+            拼接内容
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="ts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.RemoveAllSpace(System.String)">
+            <summary>
+            移除字符串中所有的空格
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.ContainsIgnoreCase(System.String,System.String)">
+            <summary>
+            返回一个值，该值指示指定的 System.String 对象是否出现在此字符串中
+            <para>忽略字符串的大小写</para>
+            </summary>
+            <param name="str">字符串，可以是任意值</param>
+            <param name="value">要检索的内容</param>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.RemovePrefixString(System.String,System.String)">
+            <summary>
+            移除前缀字符串
+            </summary>
+            <param name="self"></param>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.RemoveSuffixString(System.String,System.String)">
+            <summary>
+            移除后缀字符串
+            </summary>
+            <param name="self"></param>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.IsNullOrEmpty(System.String)">
+            <summary>
+            是否为空
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.FormatWith(System.String,System.Object[])">
+            <summary>
+            格式化
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.IsMatch(System.String,System.String)">
+            <summary>
+            正则
+            </summary>
+            <param name="s"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.StringExtension.Match(System.String,System.String)">
+            <summary>
+            正则
+            </summary>
+            <param name="s"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.DateTimeUtil">
+            <summary>
+            时间戳工具类
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.DateTimeUtil.timeStampStartTime">
+            <summary>
+            时间戳计时开始时间
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.DateTimeUtil.DateTimeToTimeStamp(System.DateTime)">
+            <summary>
+            DateTime转换为10位时间戳（单位：秒）
+            </summary>
+            <param name="dateTime"> DateTime</param>
+            <returns>10位时间戳（单位：秒）</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.DateTimeUtil.DateTimeToLongTimeStamp(System.DateTime)">
+            <summary>
+            DateTime转换为13位时间戳（单位：毫秒）
+            </summary>
+            <param name="dateTime"> DateTime</param>
+            <returns>13位时间戳（单位：毫秒）</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.DateTimeUtil.TimeStampToDateTime(System.Int64)">
+            <summary>
+            10位时间戳（单位：秒）转换为DateTime
+            </summary>
+            <param name="timeStamp">10位时间戳（单位：秒）</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.DateTimeUtil.LongTimeStampToDateTime(System.Int64)">
+            <summary>
+            13位时间戳（单位：毫秒）转换为DateTime
+            </summary>
+            <param name="longTimeStamp">13位时间戳（单位：毫秒）</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.HttpUtil">
+            <summary>
+            HTTP访问工具类
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.HttpUtil.baseUri">
+            <summary>
+            环境域名
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.HttpUtil.timeout">
+            <summary>
+            超时时间
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.HttpUtil.clientFactory">
+            <summary>
+            客户端工厂
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.#ctor(System.String,System.Int32)">
+            <summary>
+            ctor
+            </summary>
+            <param name="baseUri">环境域名</param>
+            <param name="timeout">超时时间/秒</param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.GetAsync``1(System.String,System.String)">
+            <summary>
+            Get请求
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="url"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.PostAsync``1(System.String,System.Object,System.String)">
+            <summary>
+            Post请求
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="url"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.PutAsync``1(System.String,System.Object,System.String)">
+            <summary>
+            Put请求
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="url"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.DeleteAsync``1(System.String,System.String)">
+            <summary>
+            Delete请求
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="url"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.CreateClient(System.String)">
+            <summary>
+            构建客户端
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.HttpUtil.ReadContentAsync``1(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            解析返回内容
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.NativeStorage`1">
+            <summary>
+            本地存储
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NativeStorage`1.Get">
+            <summary>
+            读取
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NativeStorage`1.Put(`0)">
+            <summary>
+            写入
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="T:Toolkit.Library.Tools.NameDB">
+            <summary>
+            使用姓名数据库查询
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.NameDB.Instance">
+            <summary>
+             获取单实例
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NameDB.#ctor">
+            <summary>
+            私有构造
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NameDB.Update(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            更新数据字典
+            </summary>
+            <param name="data"></param>
+            <param name="replace"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NameDB.LoadResource">
+            <summary>
+            加载拼音库资源
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NameDB.GetPinyin(System.String)">
+            <summary>
+            获取汉字的拼音
+            </summary>
+            <param name="hanzi"></param>
+            <returns>若未找到汉字拼音，则返回空</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.NameDB.GetHanzi(System.String,System.Boolean)">
+            <summary>
+            根据拼音获取汉字
+            </summary>
+            <param name="pinyin">拼音</param>
+            <param name="matchAll">是否全部匹配，为true时，匹配整个拼音，否则匹配开头字符，此参数用于告知传入的拼音是完整拼音还是仅仅是声母</param>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.PinyinDB">
+            <summary>
+            拼音数据库文件操作（单实例类）
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.PinyinDB.Instance">
+            <summary>
+             获取单实例
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinDB.#ctor">
+            <summary>
+            私有构造
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinDB.Update(System.Collections.Generic.Dictionary{System.Char,System.String[]},System.Boolean)">
+            <summary>
+            更新数据字典
+            </summary>
+            <param name="data"></param>
+            <param name="replace"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinDB.LoadResource">
+            <summary>
+            加载拼音库资源
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinDB.GetPinyin(System.Char)">
+            <summary>
+            获取汉字的拼音数组。
+            </summary>
+            <param name="hanzi"></param>
+            <returns>若未找到汉字拼音，则返回空数组</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinDB.GetHanzi(System.String,System.Boolean)">
+            <summary>
+            根据单个拼音获取汉字
+            </summary>
+            <param name="pinyin">单个拼音</param>
+            <param name="matchAll">是否完整匹配，为true时，匹配整个拼音，否则匹配开头字符</param>
+            <returns></returns>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinDB.DATA">
+            拼音数据
+        </member>
+        <member name="T:Toolkit.Library.Tools.PinyinException">
+            <summary>
+            拼音异常类
+            </summary>
+        </member>
+        <member name="T:Toolkit.Library.Tools.UnsupportedUnicodeException">
+            <summary>
+            转换拼音的字符非汉字字符
+            </summary>
+        </member>
+        <member name="T:Toolkit.Library.Tools.Pinyin4Name">
+            <summary>
+            处理姓名专用
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Name.GetPinyin(System.String,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            获取姓的拼音，如果是复姓则由空格分隔
+            </summary>
+            <param name="firstName">要查询拼音的姓</param>
+            <param name="format">输出拼音格式化参数</param>
+            <returns>返回姓的拼音，若未找到姓，则返回null</returns>
+            <exception cref="T:Toolkit.Library.Tools.UnsupportedUnicodeException">当要获取拼音的字符不是汉字时抛出此异常</exception>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Name.GetFirstLetter(System.String)">
+            <summary>
+            获取姓的首字母，如果是复姓则由空格分隔首字母
+            </summary>
+            <param name="firstName">要查询拼音的姓</param>
+            <returns>返回姓的拼音首字母，若未找到姓，则返回null</returns>
+            <exception cref="T:Toolkit.Library.Tools.UnsupportedUnicodeException">当要获取拼音的字符不是汉字时抛出此异常</exception>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Name.GetHanzi(System.String,System.Boolean)">
+            <summary>
+            根据拼音查询匹配的姓
+            </summary>
+            <param name="pinyin"></param>
+            <param name="matchAll">是否全部匹配，为true时，匹配整个拼音，否则匹配开头字符，此参数用于告知传入的拼音是完整拼音还是仅仅是声母</param>
+            <returns>匹配的姓数组</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Name.UpadteMap(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            更新姓名数据库
+            </summary>
+            <param name="data">复姓的拼音使用一个空格分隔</param>
+            <param name="replace">是否替换已经存在的项，默认为 false</param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetPinyin(System.Char,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            获取汉字的拼音数组
+            </summary>
+            <param name="hanzi">要查询拼音的汉字字符</param>
+            <param name="format">设置输出拼音的格式</param>
+            <returns>汉字的拼音数组，若未找到汉字拼音，则返回空数组</returns>
+            <exception cref="T:Toolkit.Library.Tools.UnsupportedUnicodeException">当要获取拼音的字符不是汉字时抛出此异常</exception>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetFirstPinyin(System.Char,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            获取格式化后的唯一拼音(单音字)或者第一个拼音(多音字)
+            </summary>
+            <param name="hanzi">要查询拼音的汉字字符</param>
+            <param name="format">拼音输出格式化参数</param>
+            <see cref="T:Toolkit.Library.Tools.PinyinFormat"/>
+            <seealso cref="T:Toolkit.Library.Tools.PinyinUtil"/>
+            <returns>格式化后的唯一拼音(单音字)或者第一个拼音(多音字)</returns>
+            <exception cref="T:Toolkit.Library.Tools.UnsupportedUnicodeException">当要获取拼音的字符不是汉字时抛出此异常</exception>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetPinyinArray(System.String,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            获取一个字符串内所有汉字的拼音数组
+            </summary>
+            <param name="text">要获取拼音的汉字字符串</param>
+            <param name="format">拼音输出格式化参数</param>
+            <returns>返回拼音列表，每个汉字的拼音会作为一个数组存放（无论是单音字还是多音字）</returns>
+            <see cref="T:Toolkit.Library.Tools.PinyinItem"/>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetPinyin(System.String,Toolkit.Library.Tools.PinyinFormat,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            获取一个字符串内所有汉字的拼音（多音字取第一个读音，带格式）
+            </summary>
+            <param name="text">要获取拼音的汉字字符串</param>
+            <param name="format">拼音输出格式化参数</param>
+            <param name="caseSpread">是否将前面的格式中的大小写扩展到其它非拼音字符，默认为false。firstLetterOnly为false时有效 </param>
+            <param name="firstLetterOnly">是否只取拼音首字母，为true时，format无效</param>
+            <param name="multiFirstLetter">firstLetterOnly为true时有效，多音字的多个读音首字母是否全取，如果多音字拼音首字母相同，只保留一个</param>
+            <returns>firstLetterOnly为true时，只取拼音首字母格式为[L]，后面追加空格；multiFirstLetter为true时，多音字的多个拼音首字母格式为[L, H]，后面追加空格</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetPinyin(System.String,Toolkit.Library.Tools.PinyinFormat,System.Boolean,System.Func{System.String[],System.Char,System.String,System.String})">
+            <summary>
+            获取一个字符串内所有汉字的拼音（多音字取第一个读音，带格式）
+            </summary>
+            <param name="text">要获取拼音的汉字字符串</param>
+            <param name="format">拼音输出格式化参数</param>
+            <param name="caseSpread">是否将前面的格式中的大小写扩展到其它非拼音字符，默认为false。</param>
+            <param name="pinyinHandler">
+            拼音处理器，在获取到拼音后通过这个来处理，
+            如果传null，则默认取第一个拼音（多音字），
+            参数：
+            1 string[] 拼音数组
+            2 char 当前的汉字
+            3 string 要转成拼音的字符串
+            return 拼音字符串，这个返回值将作为这个汉字的拼音放到结果中
+            </param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetPinyin(System.String,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            获取一个字符串内所有汉字的拼音（多音字取第一个读音，带格式），format中指定的大小写模式不会扩展到非拼音字符
+            </summary>
+            <param name="text">要获取拼音的汉字字符串</param>
+            <param name="format">拼音输出格式化参数</param>
+            <returns>格式化后的拼音字符串</returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.GetHanzi(System.String,System.Boolean)">
+            <summary>
+            根据单个拼音查询匹配的汉字
+            </summary>
+            <param name="pinyin">要查询汉字的单个拼音</param>
+            <param name="matchAll">是否全部匹配，为true时，匹配整个拼音，否则匹配开头字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Pinyin4Net.UpadteMap(System.Collections.Generic.Dictionary{System.Char,System.String[]},System.Boolean)">
+            <summary>
+            更新拼音数据库
+            </summary>
+            <param name="data">多音字作在数组中</param>
+            <param name="replace">是否替换已经存在的项，默认为 false</param>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.None">
+            <summary>
+            不指定格式
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.CAPITALIZE_FIRST_LETTER">
+            <summary>
+            首字母大写，此选项对 a e o i u 几个独音无效
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.LOWERCASE">
+            <summary>
+            全小写
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.UPPERCASE">
+            <summary>
+            全大写
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.WITH_U_AND_COLON">
+            <summary>
+            将 ü 输出为 u=
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.WITH_V">
+            <summary>
+            将 ü 输出为 v
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.WITH_U_UNICODE">
+            <summary>
+            将 ü 输出为ü
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.WITH_TONE_MARK">
+            <summary>
+            带声调标志
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.WITHOUT_TONE">
+            <summary>
+            不带声调
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.PinyinFormat.WITH_TONE_NUMBER">
+            <summary>
+            带声调数字值
+            </summary>
+        </member>
+        <member name="T:Toolkit.Library.Tools.PinyinItem">
+            <summary>
+            调用 GetPinyinArray 时的返回项数据结构
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.PinyinItem.RawChar">
+            <summary>
+            原始字符
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.PinyinItem.IsHanzi">
+            <summary>
+            是否是汉字
+            </summary>
+        </member>
+        <member name="T:Toolkit.Library.Tools.PinyinUtil">
+            <summary>
+            拼音工具类
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinUtil.IsHanzi(System.Char)">
+            <summary>
+            判断字符是否是汉字
+            </summary>
+            <param name="ch">要判断的字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinUtil.Contains(Toolkit.Library.Tools.PinyinFormat,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            扩展 OutputFormat，判断是否包含指定的格式化标识
+            </summary>
+            <param name="expected"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinUtil.Format(System.String,Toolkit.Library.Tools.PinyinFormat)">
+            <summary>
+            将拼音格式化成指定的格式
+            </summary>
+            <param name="py">待格式化的拼音</param>
+            <param name="format">格式</param>
+            <see cref="!:ToneFormat"/>
+            <see cref="!:CaseFormat"/>
+            <see cref="!:VCharFormat"/>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinUtil.convertToneNumber2ToneMark(System.String)">
+            <summary>
+            将拼音的声调数字转换成字符
+            </summary>
+            <param name="pinyin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinUtil.CapitalizeFirstLetter(System.Text.StringBuilder)">
+            <summary>
+            将首字母搞成大写的
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.PinyinUtil.SpreadCase(Toolkit.Library.Tools.PinyinFormat,System.Boolean,System.Boolean,System.Text.StringBuilder)">
+            <summary>
+            扩展大小写格式
+            </summary>
+            <param name="format"></param>
+            <param name="caseSpread"></param>
+            <param name="firstLetterOnly"></param>
+            <param name="pinyin"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.ObjectDesc">
+            <summary>
+            对象描述
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.ObjectDesc.Key">
+            <summary>
+            键
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.ObjectDesc.FileSize">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.ObjectDesc.MimeType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.ObjectDesc.PutTime">
+            <summary>
+            上传时间
+            </summary>
+        </member>
+        <member name="T:Toolkit.Library.Tools.QiniuUtil">
+            <summary>
+            七牛对象存储工具类
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.QiniuUtil.accessKey">
+            <summary>
+            访问密钥
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.QiniuUtil.secretKey">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.QiniuUtil.bucket">
+            <summary>
+            存储空间名
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.QiniuUtil.mac">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.QiniuUtil.sucessCode">
+            <summary>
+            Qiniu成功状态码
+            </summary>
+        </member>
+        <member name="F:Toolkit.Library.Tools.QiniuUtil.baseUrl">
+            <summary>
+            域名
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.QiniuUtil.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            ctor
+            </summary>
+            <param name="accessKey"></param>
+            <param name="secretKey"></param>
+            <param name="bucket"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.QiniuUtil.UploadFileAsync(System.String)">
+            <summary>
+            简单上传文件
+            </summary>
+            <param name="localFile"></param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:Toolkit.Library.Tools.QiniuUtil.ListFilesAsync">
+            <summary>
+            获取空间文件列表
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.QiniuUtil.GetAccessUrl(System.String)">
+            <summary>
+            获取文件访问链接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.QiniuUtil.DownloadFile(System.String,System.String)">
+            <summary>
+            下载文件
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.IdWorker.#ctor(System.Int64)">
+            <summary>
+            机器码
+            </summary>
+            <param name="workerId"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.IdWorker.tillNextMillis(System.Int64)">
+            <summary>
+            获取下一微秒时间戳
+            </summary>
+            <param name="lastTimestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.IdWorker.timeGen">
+            <summary>
+            生成当前时间戳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.Snowflake">
+             <summary>雪花算法。分布式Id</summary>
+             <remarks>
+             文档 https://www.yuque.com/smartstone/nx/snow_flake
+            
+             使用一个 64 bit 的 long 型的数字作为全局唯一 id。在分布式系统中的应用十分广泛，且ID 引入了时间戳，基本上保持自增。
+             1bit保留 + 41bit时间戳 + 10bit机器 + 12bit序列号
+             </remarks>
+        </member>
+        <member name="P:Toolkit.Library.Tools.Snowflake.StartTimestamp">
+            <summary>开始时间戳。首次使用前设置，否则无效，默认1970-1-1</summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.Snowflake.WorkerId">
+            <summary>机器Id，取10位</summary>
+        </member>
+        <member name="P:Toolkit.Library.Tools.Snowflake.Sequence">
+            <summary>序列号，取12位</summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Snowflake.NewId">
+            <summary>获取下一个Id</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Snowflake.NewId(System.DateTime)">
+            <summary>获取指定时间的Id，带上节点和序列号。可用于根据业务时间构造插入Id</summary>
+            <param name="time">时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Snowflake.GetId(System.DateTime)">
+            <summary>时间转为Id，不带节点和序列号。可用于构建时间片段查询</summary>
+            <param name="time">时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Snowflake.TryParse(System.Int64,System.DateTime@,System.Int32@,System.Int32@)">
+            <summary>尝试分析</summary>
+            <param name="id"></param>
+            <param name="time">时间</param>
+            <param name="workerId">节点</param>
+            <param name="sequence">序列号</param>
+            <returns></returns>
+        </member>
+        <member name="T:Toolkit.Library.Tools.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.BubbleSort(System.Int32[])">
+            <summary>
+            冒泡
+            </summary>
+            <param name="array"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.SelectSort(System.Int32[])">
+            <summary>
+            选择排序
+            </summary>
+            <param name="array"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.InsertSort(System.Int32[])">
+            <summary>
+            插入排序
+            </summary>
+            <param name="array"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.ShellSort(System.Int32[])">
+            <summary>
+            希尔排序-移动法
+            </summary>
+            <param name="array"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.ShellSortBySwap(System.Int32[])">
+            <summary>
+            希尔排序-交换法
+            </summary>
+            <param name="array"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.QuickSort(System.Int32[])">
+            <summary>
+            快速排序
+            </summary>
+            <param name="array"></param>
+        </member>
+        <member name="M:Toolkit.Library.Tools.Sort.IsBlankOrSingleElement(System.Int32[])">
+            <summary>
+            数组为null或只有一个元素
+            </summary>
+            <param name="array"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

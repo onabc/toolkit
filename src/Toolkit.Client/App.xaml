@@ -1,0 +1,17 @@
+﻿<Application x:Class="Toolkit.Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Toolkit.Client">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+          <local:Bootstrapper x:Key="bootstrapper" />
+        </ResourceDictionary>
+        <ResourceDictionary Source="Themes/ColorStyle.xaml" />
+        <ResourceDictionary Source="Themes/ItemsControlStyle.xaml" />
+        <ResourceDictionary Source="Themes/WindowStyle.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

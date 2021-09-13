@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit.Client", "Toolkit.Client\Toolkit.Client.csproj", "{B4FA9129-D31D-483A-A045-16F3AE91433D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit.Library", "Toolkit.Library\Toolkit.Library.csproj", "{6F2E79D4-63F4-4651-B7C6-53C15648006C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit.Widget", "Toolkit.Widget\Toolkit.Widget.csproj", "{E3141297-EEC2-4BCF-A8FC-94E5462899DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit.Test", "Toolkit.Test\Toolkit.Test.csproj", "{359CA22E-BDA7-4F26-AC7E-467E2ECD94D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".template.config", ".template.config", "{47E176F6-2461-4D99-AA73-B11354CAC1E2}"
+	ProjectSection(SolutionItems) = preProject
+		.template.config\template.json = .template.config\template.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{73AB396B-140D-4293-8560-CFCA0D726BC1}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+		..\nsis_setup.nsi = ..\nsis_setup.nsi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4FA9129-D31D-483A-A045-16F3AE91433D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FA9129-D31D-483A-A045-16F3AE91433D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FA9129-D31D-483A-A045-16F3AE91433D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FA9129-D31D-483A-A045-16F3AE91433D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2E79D4-63F4-4651-B7C6-53C15648006C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2E79D4-63F4-4651-B7C6-53C15648006C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2E79D4-63F4-4651-B7C6-53C15648006C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2E79D4-63F4-4651-B7C6-53C15648006C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3141297-EEC2-4BCF-A8FC-94E5462899DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3141297-EEC2-4BCF-A8FC-94E5462899DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3141297-EEC2-4BCF-A8FC-94E5462899DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3141297-EEC2-4BCF-A8FC-94E5462899DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359CA22E-BDA7-4F26-AC7E-467E2ECD94D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{359CA22E-BDA7-4F26-AC7E-467E2ECD94D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359CA22E-BDA7-4F26-AC7E-467E2ECD94D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{359CA22E-BDA7-4F26-AC7E-467E2ECD94D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF0644EA-B3E5-4FF4-8730-EFB889C81E49}
+	EndGlobalSection
+EndGlobal

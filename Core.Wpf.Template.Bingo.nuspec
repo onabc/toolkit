@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Core.Wpf.Template.Bingo</id>
+    <version>1.0.0</version>
+    <description>
+      Creates a core wpf app.
+    </description>
+    <authors>Bingo Lu</authors>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+    <license type="file">LICENSE</license>
+  </metadata>
+</package>

@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Toolkit.Widget.Controls"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/CaptionButton.xaml" />
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/MetroPasswordBox.xaml" />
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/MetroTextBox.xaml" />
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/MetroCheckBox.xaml" />
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/Form.xaml" />
+    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/Loading.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
