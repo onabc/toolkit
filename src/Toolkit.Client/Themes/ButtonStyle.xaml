@@ -1,0 +1,140 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:toolkit="http://www.toolkit.org/library">
+
+    <!--  透明按钮  -->
+    <Style x:Key="TransparentButton" TargetType="ButtonBase">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource WindowForeground}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(toolkit:BorderAttached.CornerRadius), RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ToolPathButton"
+           BasedOn="{StaticResource TransparentButton}"
+           TargetType="ButtonBase">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="toolkit:ContentAttached.PathMargin" Value="3" />
+        <Setter Property="toolkit:ContentAttached.PathWidth" Value="20" />
+        <Setter Property="toolkit:ContentAttached.PathHeight" Value="20" />
+        <Setter Property="toolkit:ContentAttached.PathFill" Value="{StaticResource WindowForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(toolkit:BorderAttached.CornerRadius), RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}">
+
+                            <Path Width="{Binding Path=(toolkit:ContentAttached.PathWidth), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  Height="{Binding Path=(toolkit:ContentAttached.PathHeight), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  Margin="{Binding Path=(toolkit:ContentAttached.PathMargin), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  HorizontalAlignment="{Binding Path=(toolkit:ContentAttached.PathHorizontalAlignment), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  VerticalAlignment="{Binding Path=(toolkit:ContentAttached.PathVerticalAlignment), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  Data="{Binding Path=(toolkit:ContentAttached.Path), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  Fill="{Binding Path=(toolkit:ContentAttached.PathFill), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                  Stretch="{Binding Path=(toolkit:ContentAttached.PathStretch), RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Foreground" Value="#A8A9AA" />
+                            <Setter Property="toolkit:ContentAttached.PathFill" Value="#A8A9AA" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ToolPathHeaderedButton"
+           BasedOn="{StaticResource TransparentButton}"
+           TargetType="ButtonBase">
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="toolkit:ContentAttached.PathMargin" Value="5" />
+        <Setter Property="toolkit:ContentAttached.PathWidth" Value="20" />
+        <Setter Property="toolkit:ContentAttached.PathHeight" Value="20" />
+        <Setter Property="toolkit:ContentAttached.PathFill" Value="{StaticResource WindowForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(toolkit:BorderAttached.CornerRadius), RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <DockPanel Margin="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="content"
+                                                  Margin="{Binding Path=(toolkit:ContentAttached.ContentMargin), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  DockPanel.Dock="Bottom"
+                                                  RecognizesAccessKey="True" />
+
+                                <Path Width="{Binding Path=(toolkit:ContentAttached.PathWidth), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Height="{Binding Path=(toolkit:ContentAttached.PathHeight), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Margin="{Binding Path=(toolkit:ContentAttached.PathMargin), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      HorizontalAlignment="{Binding Path=(toolkit:ContentAttached.PathHorizontalAlignment), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      VerticalAlignment="{Binding Path=(toolkit:ContentAttached.PathVerticalAlignment), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Data="{Binding Path=(toolkit:ContentAttached.Path), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Fill="{Binding Path=(toolkit:ContentAttached.PathFill), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Stretch="{Binding Path=(toolkit:ContentAttached.PathStretch), RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Foreground" Value="#A8A9AA" />
+                            <Setter Property="toolkit:ContentAttached.PathFill" Value="#A8A9AA" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ToolPathHeaderedToggleButton"
+           BasedOn="{StaticResource ToolPathHeaderedButton}"
+           TargetType="ToggleButton">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource ToolHightlightForeground}" />
+                <Setter Property="BorderBrush" Value="{StaticResource ToolHightlightForeground}" />
+                <Setter Property="toolkit:ContentAttached.PathFill" Value="{StaticResource ToolHightlightForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

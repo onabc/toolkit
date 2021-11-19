@@ -9,6 +9,8 @@
           <local:Bootstrapper x:Key="bootstrapper" />
         </ResourceDictionary>
         <ResourceDictionary Source="Themes/ColorStyle.xaml" />
+        <ResourceDictionary Source="Themes/PathData.xaml" />
+        <ResourceDictionary Source="Themes/ButtonStyle.xaml" />
         <ResourceDictionary Source="Themes/ItemsControlStyle.xaml" />
         <ResourceDictionary Source="Themes/WindowStyle.xaml" />
       </ResourceDictionary.MergedDictionaries>

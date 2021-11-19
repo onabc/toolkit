@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="Toolkit.Client.Views.MinesweeperView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:calc="clr-namespace:CalcBinding;assembly=CalcBinding"
+             xmlns:models="clr-namespace:Toolkit.Client.Models"
+             xmlns:local="clr-namespace:Toolkit.Client"
+             xmlns:cm="http://www.caliburnproject.org"
+             xmlns:toolkit="http://www.toolkit.org/library"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:TileStateToPathConverter x:Key="TileStateToPathConverter"/>
+        
+        <DataTemplate x:Key="TileTemplate" DataType="{x:Type models:Tile}">
+            <Border x:Name="border" Background="{StaticResource WindowBackground}"
+                    Margin="1"
+                    MinWidth="23"
+                    MinHeight="23" 
+                    CornerRadius="2"
+                    >
+                <Grid x:Name="grid">
+                    <Path Data="{Binding State, Converter={StaticResource TileStateToPathConverter}}"
+                          Fill="{StaticResource WindowForeground}"
+                          Stretch="Uniform"
+                          MaxHeight="12"
+                          MaxWidth="12"
+                          Visibility="{calc:Binding !IsOpen}"/>
+                    <TextBlock Text="{Binding MineCount}"
+                               Foreground="{StaticResource WindowForeground}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Visibility="{calc:Binding IsOpen, FalseToVisibility=Collapsed}"/>
+                    <Path Data="{StaticResource Bomb}"
+                          Fill="{StaticResource WindowForeground}"
+                          Stretch="UniformToFill"
+                          MaxHeight="12"
+                          MaxWidth="12"
+                          Visibility="{calc:Binding IsOpen and IsMine, FalseToVisibility=Collapsed}"/>
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <Trigger Property="IsMouseOver"  Value="True">
+                    <Setter TargetName="border" Property="Background" Value="{StaticResource WorkAreaBackground}" />
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MaxHeight="80" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <UniformGrid Rows="1" >
+            <TextBlock Text="{Binding MineCount}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button x:Name="ReStart" Style="{StaticResource ToolPathButton}" toolkit:ContentAttached.Path="{StaticResource Smile}" Cursor="Hand"/>
+            <TextBlock Text="待定" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </UniformGrid>
+        
+        <ItemsControl x:Name="TileItems"
+                      IsEnabled="{calc:Binding 'GameStatus==models:GameStatus.Running' }"
+                      ItemTemplate="{StaticResource TileTemplate}"
+                      Grid.Row="1" >
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="cm:Message.Attach" Value="[PreviewMouseLeftButtonDown]=[MouseLeftButtonDown($dataContext,$eventArgs)];[PreviewMouseRightButtonDown]=[MouseRightButtonDown($dataContext)]"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <toolkit:UniformPanel Columns="{Binding Columns}" 
+                                          Rows="{Binding Rows}" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+        <Border Grid.Row="1"
+                Background="{StaticResource BlackBrush_2C2F36}" 
+                CornerRadius="6" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+            <TextBlock Text="{Binding GameStatus}" Foreground="{StaticResource WindowForeground}" Margin="25 15" Visibility="{calc:Binding 'GameStatus!=models:GameStatus.Running', FalseToVisibility=Collapsed}"/>
+        </Border>
+        
+    </Grid>
+</UserControl>

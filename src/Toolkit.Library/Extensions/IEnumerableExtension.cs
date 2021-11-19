@@ -16,6 +16,27 @@ namespace Toolkit.Library.Extensions
             => source is null || !source.Any();
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> GetList<T>(this IEnumerable<T> source, IEnumerable<int> indexs)
+        {
+            List<T> list = new List<T>();
+            foreach (int index in indexs)
+            {
+                if (index > -1 && index < source.Count())
+                {
+                    list.Add(source.ElementAt(index));
+                }
+            }
+            return list;
+        }
+
+
+        /// <summary>
         /// 拼接内容
         /// </summary>
         /// <typeparam name="T"></typeparam>

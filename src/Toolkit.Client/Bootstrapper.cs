@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using Akavache;
+using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Caliburn.Micro;
 using Serilog;
@@ -28,6 +29,8 @@ namespace Toolkit.Client
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
 
             Initialize();
+
+            Akavache.Registrations.Start("AkavacheExperiment");
         }
 
         protected override void Configure()
@@ -40,6 +43,9 @@ namespace Toolkit.Client
             builder.RegisterType<ShellViewModel>();
 
             builder.RegisterType<TransactionInterceptor>();
+
+            builder.RegisterAssignableAssemblyTypes<IRecreationModule>(SelectAssemblies()).As<IRecreationModule>();
+
             builder.RegisterAssignableAssemblyTypes<IDisplayModule>(SelectAssemblies())
                 .As<IDisplayModule>()
                 .InterceptedBy(typeof(TransactionInterceptor))//注册拦截器
@@ -104,6 +110,7 @@ namespace Toolkit.Client
         protected override void OnExit(object sender, EventArgs e)
         {
             Log.CloseAndFlush();
+            BlobCache.Shutdown().Wait();
             base.OnExit(sender, e);
         }
 

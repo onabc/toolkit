@@ -50,9 +50,9 @@
   <SolidColorBrush x:Key="SuccessBrush" Color="#428bca" />
   <SolidColorBrush x:Key="WarningBrush" Color="#e9af20" />
   <SolidColorBrush x:Key="ErrorBrush" Color="#a94442" />
-  <SolidColorBrush x:Key="FatalBrush" Color="#000" />
+    <SolidColorBrush x:Key="FatalBrush" Color="#000" />
 
-  <LinearGradientBrush x:Key="GradualBlueBrush" StartPoint="0,0" EndPoint="1,0">
+    <LinearGradientBrush x:Key="GradualBlueBrush" StartPoint="0,0" EndPoint="1,0">
     <GradientStop Offset="0.0" Color="#1E61CC" />
     <GradientStop Offset="1.0" Color="#0926AB " />
   </LinearGradientBrush>

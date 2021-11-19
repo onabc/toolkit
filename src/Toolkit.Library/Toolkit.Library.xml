@@ -82,6 +82,15 @@
             <param name="source"></param>
             <returns></returns>
         </member>
+        <member name="M:Toolkit.Library.Extensions.IEnumerableExtension.GetList``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
         <member name="M:Toolkit.Library.Extensions.IEnumerableExtension.Append``1(System.Collections.Generic.IEnumerable{``0},``0[])">
             <summary>
             拼接内容

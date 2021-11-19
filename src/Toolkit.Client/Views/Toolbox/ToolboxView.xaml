@@ -6,13 +6,16 @@
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
-  <Grid>
-    <TextBlock Foreground="{StaticResource WindowForeground}" Text="{Binding DisplayName}" />
+    <Grid>
+        <TextBlock Foreground="{StaticResource WindowForeground}" Text="{Binding DisplayName}" />
 
-    <Button x:Name="Click"
-            Padding="20,10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Content="按钮" />
-  </Grid>
+        <TextBlock Text="{Binding Citynm}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <UniformGrid Rows="1"
+            VerticalAlignment="Bottom">
+            <Button x:Name="Click" HorizontalAlignment="Center" Padding="20,10" Content="按钮" />
+
+            <Button x:Name="Query" HorizontalAlignment="Center" Padding="20,10" Content="查询天气" />
+        </UniformGrid>
+    </Grid>
 </UserControl>

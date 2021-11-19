@@ -2,16 +2,20 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net6.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Remove="Utils\**" />
+		<Compile Remove="Views\Toolbox\新文件夹\**" />
 		<EmbeddedResource Remove="Utils\**" />
+		<EmbeddedResource Remove="Views\Toolbox\新文件夹\**" />
 		<None Remove="Utils\**" />
+		<None Remove="Views\Toolbox\新文件夹\**" />
 		<Page Remove="Utils\**" />
+		<Page Remove="Views\Toolbox\新文件夹\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -19,10 +23,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="akavache" Version="7.3.1" />
 		<PackageReference Include="CalcBinding" Version="2.5.2" />
 		<PackageReference Include="Caliburn.Micro" Version="4.0.173" />
 		<PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
 		<PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+		<PackageReference Include="ReactiveUI" Version="16.3.10" />
+		<PackageReference Include="Refit" Version="6.1.15" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,10 +44,6 @@
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Views\Toolbox\新文件夹\" />
 	</ItemGroup>
 
 	<ProjectExtensions>
