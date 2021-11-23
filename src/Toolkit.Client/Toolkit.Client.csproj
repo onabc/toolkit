@@ -26,6 +26,7 @@
 		<PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
 		<PackageReference Include="ReactiveUI" Version="16.3.10" />
 		<PackageReference Include="Refit" Version="6.1.15" />
+		<PackageReference Include="Refit.Newtonsoft.Json" Version="6.1.15" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -46,7 +47,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Accessors\" />
 	  <Folder Include="Converter\" />
 	</ItemGroup>
 

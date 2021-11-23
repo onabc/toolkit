@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Caliburn.Micro;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Windows;
 using System.Windows.Threading;
 using Toolkit.Client.Models;
 using Toolkit.Client.Views;
+using Toolkit.Library.Extensions;
 using Toolkit.Widget;
 using Toolkit.Widget.Extensions;
 
@@ -54,6 +56,13 @@ namespace Toolkit.Client
 
             //从appsettings.json读取serilog配置
             builder.RegisterSerilogFromConfiguration().SingleInstance();
+
+            var configuration = new ConfigurationBuilder()
+                   .AddJsonFile("appsettings.secret.json")
+                   .Build();
+
+            //注入自定义配置
+            builder.Register((c, p) => GetToolkitConfig()).SingleInstance();
 
             container = builder.Build();
         }
@@ -126,6 +135,17 @@ namespace Toolkit.Client
 
                 return originalViewTypeLocator(viewModelType, displayLocation, context);
             };
+        }
+
+        private ToolkitConfig GetToolkitConfig()
+        {
+            var configuration = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile("appsettings.secret.json", optional: false, reloadOnChange: true)
+                    .Build();
+            var config = new ToolkitConfig();
+            configuration.GetSection("toolkitConfig").Bind(config);
+            return config;
         }
 
         #region 异常处理部分

@@ -100,6 +100,45 @@
             <param name="ts"></param>
             <returns></returns>
         </member>
+        <member name="M:Toolkit.Library.Extensions.SerializeExtensions.ToJson(System.Object,System.Boolean)">
+            <summary>
+            实体对象转JSON字符串
+            </summary>
+            <param name="obj"></param>
+            <param name="ignoreNull"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.SerializeExtensions.FromJson``1(System.String)">
+            <summary>
+            JSON字符串转实体对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jsonStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.SerializeExtensions.SerializeUtf8(System.String)">
+            <summary>
+            字符串序列化成字节序列
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.SerializeExtensions.DeserializeUtf8(System.Byte[])">
+            <summary>
+            字节序列序列化成字符串
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Toolkit.Library.Extensions.SerializeExtensions.FromJsonFile``1(System.String,System.String)">
+            <summary>
+            根据key将json文件内容转换为指定对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="filePath"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
         <member name="M:Toolkit.Library.Extensions.StringExtension.RemoveAllSpace(System.String)">
             <summary>
             移除字符串中所有的空格
