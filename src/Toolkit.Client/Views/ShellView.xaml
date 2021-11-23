@@ -4,28 +4,70 @@
         xmlns:cm="http://www.caliburnproject.org"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:widget="http://www.toolkit.org/library"
+        xmlns:toolkit="http://www.toolkit.org/library"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
-  <Window.Style>
-    <Style BasedOn="{StaticResource CustomWindow}" TargetType="Window">
-      <Setter Property="Template" Value="{StaticResource CustomTopBarWindowTemplate}" />
-    </Style>
-  </Window.Style>
-  <widget:ContentAttached.AtachedContent>
+    <Window.Style>
+        <Style BasedOn="{StaticResource CustomWindow}" TargetType="Window">
+            <Setter Property="Template" Value="{StaticResource CustomTopBarWindowTemplate}" />
+            <Setter Property="Height" Value="720" />
+            <Setter Property="Width" Value="1080" />
+        </Style>
+    </Window.Style>
+    <!--<widget:ContentAttached.AtachedContent>
 
-    <ListBox HorizontalAlignment="Center"
+        <ListBox HorizontalAlignment="Center"
                ItemsSource="{Binding Items}"
                SelectedIndex="0"
                SelectedItem="{Binding ActiveItem}"
                Style="{StaticResource TopBarListBox}" />
-  </widget:ContentAttached.AtachedContent>
+    </widget:ContentAttached.AtachedContent>-->
 
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="35" />
-      <RowDefinition />
-    </Grid.RowDefinitions>
-    <ContentControl x:Name="ActiveItem" Grid.Row="1" />
-  </Grid>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"
+                                  MinWidth="120"
+                                  MaxWidth="400" />
+                <ColumnDefinition Width="3" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.RowSpan="2" Background="#F5F5F6">
+                <StackPanel MinHeight="80"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Top"
+                            Orientation="Horizontal">
+                    <Image Width="{Binding Source={x:Static SystemParameters.CaptionHeight}}"
+                           Margin="15,0,0,0"
+                           Source="/Resources/favicon.ico" />
+                    <TextBlock Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Foreground="{StaticResource BlackBrush_2C2F36}"
+                               Text="{Binding DisplayName}" />
+                </StackPanel>
+
+                <ListBox x:Name="Items"
+                         Margin="8,3"
+                         Style="{StaticResource MenuListBox}" />
+            </DockPanel>
+
+            <GridSplitter Grid.RowSpan="2"
+                          Grid.Column="1"
+                          Width="3"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Stretch"
+                          Background="Transparent" />
+
+            <Border Grid.Row="1" Grid.Column="2">
+                <ContentControl x:Name="ActiveItem" Margin="5" />
+            </Border>
+        </Grid>
+    </Grid>
 </Window>

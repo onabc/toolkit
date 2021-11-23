@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Toolkit.Widget.Controls
@@ -19,6 +20,15 @@ namespace Toolkit.Widget.Controls
 
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(MetroTextBox));
+
+        public Visibility ShowClear
+        {
+            get { return (Visibility)GetValue(ShowClearProperty); }
+            set { SetValue(ShowClearProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowClearProperty =
+            DependencyProperty.Register("ShowClear", typeof(Visibility), typeof(MetroTextBox), new PropertyMetadata(Visibility.Collapsed));
 
         /// <summary>
         /// 获取或者设置水印
@@ -40,5 +50,17 @@ namespace Toolkit.Widget.Controls
 
         public static readonly DependencyProperty MouseMoveBackgroundProperty =
             DependencyProperty.Register("MouseMoveBackground", typeof(Brush), typeof(MetroTextBox));
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            ButtonBase clearBtn = this.Template.FindName("PART_ContentHostClearButton", this) as ButtonBase;
+
+            clearBtn.Click += (s, e) =>
+            {
+                this.Text = "";
+            };
+        }
     }
 }

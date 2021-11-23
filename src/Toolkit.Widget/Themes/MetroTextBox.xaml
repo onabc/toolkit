@@ -2,136 +2,180 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Toolkit.Widget.Controls"
                     xmlns:converter="clr-namespace:Toolkit.Widget.Converters">
-  <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/MetroBase.xaml" />
-  </ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Toolkit.Widget;component/Themes/MetroBase.xaml" />
+        <ResourceDictionary Source="/Toolkit.Widget;component/Themes/Icons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
-  <converter:StringToVisibility x:Key="StringToVisibility" />
+    <converter:StringToVisibility x:Key="StringToVisibility" />
 
-  <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
-    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-    <Setter Property="SnapsToDevicePixels" Value="True" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type Button}">
-          <Grid>
-            <TextBlock x:Name="title"
-                       Margin="8,0"
-                       VerticalAlignment="Center"
-                       Opacity="0.65"
-                       Text="{TemplateBinding Content}" />
-            <VisualStateManager.VisualStateGroups>
-              <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal" />
-                <VisualState x:Name="MouseOver">
-                  <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="title"
-                                     Storyboard.TargetProperty="(UIElement.Opacity)"
-                                     To="0.9"
-                                     Duration="0:0:0.1" />
-                  </Storyboard>
-                </VisualState>
-                <VisualState x:Name="Pressed">
-                  <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="title"
-                                     Storyboard.TargetProperty="(UIElement.Opacity)"
-                                     To="0.5"
-                                     Duration="0:0:0.1" />
-                  </Storyboard>
-                </VisualState>
-                <VisualState x:Name="Disabled" />
-              </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
-  <Style TargetType="{x:Type controls:MetroTextBox}">
-    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-    <Setter Property="SnapsToDevicePixels" Value="True" />
-    <Setter Property="AcceptsReturn" Value="False" />
-    <Setter Property="TextWrapping" Value="NoWrap" />
-    <Setter Property="Background" Value="#FFFFFFFF" />
-    <Setter Property="MouseMoveBackground" Value="#FFFFFFFF" />
-    <Setter Property="BorderBrush" Value="{StaticResource Brush}" />
-    <Setter Property="Foreground" Value="#000" />
-    <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="2" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type controls:MetroTextBox}">
-          <Grid>
-
-            <Border x:Name="back"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
-              <Grid>
-                <Border x:Name="border"
-                        BorderBrush="#FF000000"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Opacity="0.15" />
-                <Border x:Name="bordermove"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Opacity="0" />
-                <Border x:Name="bordertrue"
-                        BorderBrush="#FF99cb8a"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Visibility="Hidden" />
-                <Border x:Name="borderfalse"
-                        BorderBrush="#FFe99595"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Visibility="Hidden" />
-                <Grid x:Name="hideInputHint" Opacity="0">
-                  <TextBlock x:Name="inputHint"
-                             Margin="6,5,5,5"
-                             Padding="{TemplateBinding Padding}"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                             FontSize="{TemplateBinding FontSize}"
-                             Foreground="#A5000000"
-                             IsHitTestVisible="False"
-                             Text="{TemplateBinding Watermark}" />
-                </Grid>
-                <ScrollViewer x:Name="PART_ContentHost"
-                              Grid.Column="1"
-                              Margin="5"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              Focusable="false"
-                              HorizontalScrollBarVisibility="Hidden"
-                              VerticalScrollBarVisibility="Hidden" />
-              </Grid>
-            </Border>
-          </Grid>
-          <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-              <Setter TargetName="border" Property="Opacity" Value="0" />
-              <Setter TargetName="bordermove" Property="Opacity" Value="1" />
-              <Setter TargetName="bordertrue" Property="BorderBrush" Value="#ff6fae5f" />
-              <Setter TargetName="borderfalse" Property="BorderBrush" Value="#ffe67979" />
-              <Setter TargetName="back" Property="Background" Value="{Binding MouseMoveBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-              <!--<Setter TargetName="inputHint" Property="Opacity" Value="0" />-->
+    <Style x:Key="TransparentButton" TargetType="ButtonBase">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      RecognizesAccessKey="True" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
             </Trigger>
+        </Style.Triggers>
+    </Style>
 
-            <Trigger Property="IsKeyboardFocused" Value="true">
-              <Setter TargetName="border" Property="Opacity" Value="0" />
-              <Setter TargetName="bordermove" Property="Opacity" Value="1" />
-              <Setter TargetName="bordertrue" Property="BorderBrush" Value="#ff6fae5f" />
-              <Setter TargetName="borderfalse" Property="BorderBrush" Value="#ffe67979" />
-              <Setter TargetName="back" Property="Background" Value="{Binding MouseMoveBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-            </Trigger>
-            <Trigger Property="Text" Value="">
-              <Setter TargetName="hideInputHint" Property="Opacity" Value="1" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+    <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <TextBlock x:Name="title"
+                                   Margin="8,0"
+                                   VerticalAlignment="Center"
+                                   Opacity="0.65"
+                                   Text="{TemplateBinding Content}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="title"
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         To="0.9"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="title"
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         To="0.5"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:MetroTextBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="AcceptsReturn" Value="False" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="Background" Value="#FFFFFFFF" />
+        <Setter Property="MouseMoveBackground" Value="#FFFFFFFF" />
+        <Setter Property="BorderBrush" Value="{StaticResource Brush}" />
+        <Setter Property="Foreground" Value="#000" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MetroTextBox}">
+                    <Grid>
+
+                        <Border x:Name="back"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Border x:Name="border"
+                                        BorderBrush="#FF000000"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        Opacity="0.15" />
+                                <Border x:Name="bordermove"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        Opacity="0" />
+                                <Border x:Name="bordertrue"
+                                        BorderBrush="#FF99cb8a"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        Visibility="Hidden" />
+                                <Border x:Name="borderfalse"
+                                        BorderBrush="#FFe99595"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        Visibility="Hidden" />
+                                <Grid x:Name="hideInputHint" Opacity="0">
+                                    <TextBlock x:Name="inputHint"
+                                               Margin="6,5,5,5"
+                                               Padding="{TemplateBinding Padding}"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               FontSize="{TemplateBinding FontSize}"
+                                               Foreground="#A5000000"
+                                               IsHitTestVisible="False"
+                                               Text="{TemplateBinding Watermark}" />
+                                </Grid>
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              Grid.Column="1"
+                                              Margin="5"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Focusable="false"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden" />
+                                <Button x:Name="PART_ContentHostClearButton"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Style="{StaticResource TransparentButton}"
+                                        Visibility="{Binding ShowClear, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Button.Content>
+                                        <Border Background="Transparent">
+                                            <Path Width="12"
+                                                  Height="12"
+                                                  Margin="5"
+                                                  Fill="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=controls:MetroTextBox}}"
+                                                  Style="{StaticResource CloseIconKey}" />
+                                        </Border>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="Opacity" Value="0" />
+                            <Setter TargetName="bordermove" Property="Opacity" Value="1" />
+                            <Setter TargetName="bordertrue" Property="BorderBrush" Value="#ff6fae5f" />
+                            <Setter TargetName="borderfalse" Property="BorderBrush" Value="#ffe67979" />
+                            <Setter TargetName="back" Property="Background" Value="{Binding MouseMoveBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <!--<Setter TargetName="inputHint" Property="Opacity" Value="0" />-->
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter TargetName="border" Property="Opacity" Value="0" />
+                            <Setter TargetName="bordermove" Property="Opacity" Value="1" />
+                            <Setter TargetName="bordertrue" Property="BorderBrush" Value="#ff6fae5f" />
+                            <Setter TargetName="borderfalse" Property="BorderBrush" Value="#ffe67979" />
+                            <Setter TargetName="back" Property="Background" Value="{Binding MouseMoveBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="hideInputHint" Property="Opacity" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

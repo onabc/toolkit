@@ -4,66 +4,66 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="d">
-  <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/Toolkit.Widget;component/Themes/Icons.xaml" />
-  </ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Toolkit.Widget;component/Themes/Icons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
-  <Style TargetType="{x:Type controls:CaptionButton}">
-    <Setter Property="Width" Value="35" />
-    <Setter Property="Height" Value="23" />
-    <Setter Property="Margin" Value="5,0" />
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="HorizontalContentAlignment" Value="Center" />
-    <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="SnapsToDevicePixels" Value="True" />
-    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-    <Setter Property="Cursor" Value="Hand" />
-    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-    <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="Focusable" Value="False" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type controls:CaptionButton}">
-          <Border x:Name="border"
-                  Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}"
-                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid Margin="{TemplateBinding Padding}"
-                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-              <ContentPresenter x:Name="contentPresenter" />
-              <Path x:Name="icon"
-                    Fill="#FFF"
-                    Visibility="Collapsed" />
-            </Grid>
-          </Border>
-          <ControlTemplate.Triggers>
-            <Trigger Property="WindowAction" Value="Minimize">
-              <Setter TargetName="icon" Property="Style" Value="{StaticResource MinimizeIconKey}" />
-            </Trigger>
-            <Trigger Property="WindowAction" Value="Maximize">
-              <Setter TargetName="icon" Property="Style" Value="{StaticResource MaximizeIconKey}" />
-            </Trigger>
-            <Trigger Property="WindowAction" Value="Normalize">
-              <Setter TargetName="icon" Property="Style" Value="{StaticResource NormalizeIconKey}" />
-            </Trigger>
-            <Trigger Property="WindowAction" Value="Close">
-              <Setter TargetName="icon" Property="Style" Value="{StaticResource CloseIconKey}" />
-            </Trigger>
-            <Trigger Property="Content" Value="{x:Null}">
-              <Setter TargetName="icon" Property="Visibility" Value="Visible" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-              <Setter TargetName="icon" Property="Fill" Value="#696969" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Style.Triggers>
-      <!--<Trigger Property="IsMouseOver" Value="True">
+    <Style TargetType="{x:Type controls:CaptionButton}">
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CaptionButton}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid Margin="{TemplateBinding Padding}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <ContentPresenter x:Name="contentPresenter" />
+                            <Path x:Name="icon"
+                                  Fill="#000"
+                                  Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowAction" Value="Minimize">
+                            <Setter TargetName="icon" Property="Style" Value="{StaticResource MinimizeIconKey}" />
+                        </Trigger>
+                        <Trigger Property="WindowAction" Value="Maximize">
+                            <Setter TargetName="icon" Property="Style" Value="{StaticResource MaximizeIconKey}" />
+                        </Trigger>
+                        <Trigger Property="WindowAction" Value="Normalize">
+                            <Setter TargetName="icon" Property="Style" Value="{StaticResource NormalizeIconKey}" />
+                        </Trigger>
+                        <Trigger Property="WindowAction" Value="Close">
+                            <Setter TargetName="icon" Property="Style" Value="{StaticResource CloseIconKey}" />
+                        </Trigger>
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="icon" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="icon" Property="Fill" Value="#696969" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--<Trigger Property="IsMouseOver" Value="True">
         <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
         <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
@@ -73,9 +73,9 @@
         <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
         <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
       </Trigger>-->
-      <Trigger Property="IsEnabled" Value="False">
-        <Setter Property="Opacity" Value="0.6" />
-      </Trigger>
-    </Style.Triggers>
-  </Style>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

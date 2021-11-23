@@ -9,13 +9,9 @@
 
 	<ItemGroup>
 		<Compile Remove="Utils\**" />
-		<Compile Remove="Views\Toolbox\新文件夹\**" />
 		<EmbeddedResource Remove="Utils\**" />
-		<EmbeddedResource Remove="Views\Toolbox\新文件夹\**" />
 		<None Remove="Utils\**" />
-		<None Remove="Views\Toolbox\新文件夹\**" />
 		<Page Remove="Utils\**" />
-		<Page Remove="Views\Toolbox\新文件夹\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -41,9 +37,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="appsettings.secret.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Accessors\" />
+	  <Folder Include="Converter\" />
 	</ItemGroup>
 
 	<ProjectExtensions>

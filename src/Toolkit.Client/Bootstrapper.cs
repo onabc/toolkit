@@ -44,8 +44,6 @@ namespace Toolkit.Client
 
             builder.RegisterType<TransactionInterceptor>();
 
-            builder.RegisterAssignableAssemblyTypes<IRecreationModule>(SelectAssemblies()).As<IRecreationModule>();
-
             builder.RegisterAssignableAssemblyTypes<IDisplayModule>(SelectAssemblies())
                 .As<IDisplayModule>()
                 .InterceptedBy(typeof(TransactionInterceptor))//注册拦截器

@@ -1,8 +1,10 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:toolkit="http://www.toolkit.org/library">
 
     <Style x:Key="TopBarListBoxItem" TargetType="ListBoxItem">
         <Setter Property="Foreground" Value="{StaticResource Blue_6C4EF0}" />
-        <Setter Property="Background" Value="{StaticResource WindowForeground}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="10,2" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="Margin" Value="0.5" />
@@ -36,7 +38,7 @@
     <Style x:Key="TopBarListBox" TargetType="ListBox">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{StaticResource MingQing}" />
         <Setter Property="SelectionMode" Value="Single" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource TopBarListBoxItem}" />
@@ -58,38 +60,50 @@
 
     <!--  左侧主菜单列表子项  -->
     <Style x:Key="MenuListBoxItem" TargetType="ListBoxItem">
-        <Setter Property="FontSize" Value="16" />
-        <Setter Property="Background" Value="{StaticResource WindowChromeBackground}" />
-        <Setter Property="Foreground" Value="#979797" />
-        <Setter Property="Padding" Value="0,12" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource BlackBrush_2C2F36}" />
+        <Setter Property="Padding" Value="0,15" />
         <Setter Property="Margin" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="toolkit:ContentAttached.Path" Value="{Binding Icon}" />
+        <Setter Property="toolkit:ContentAttached.PathHeight" Value="16" />
+        <Setter Property="toolkit:ContentAttached.PathWidth" Value="16" />
+        <Setter Property="toolkit:ContentAttached.PathMargin" Value="15 0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Grid>
-                        <Border x:Name="border" Background="{StaticResource WindowBackground}"
-                                Opacity="0.8" 
-                                CornerRadius="8" Visibility="Collapsed"
-                                BorderThickness="0"/>
-                        <TextBlock Margin="{TemplateBinding Padding}"
-                                   HorizontalAlignment="Center" Foreground="{TemplateBinding Foreground}"
-                                   FontSize="{TemplateBinding FontSize}"
-                                   Text="{Binding DisplayName}" />
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border x:Name="border"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                CornerRadius="8">
+                            <StackPanel Orientation="Horizontal">
+                                <Path Width="{Binding Path=(toolkit:ContentAttached.PathWidth), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Height="{Binding Path=(toolkit:ContentAttached.PathHeight), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Margin="{Binding Path=(toolkit:ContentAttached.PathMargin), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      HorizontalAlignment="{Binding Path=(toolkit:ContentAttached.PathHorizontalAlignment), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      VerticalAlignment="{Binding Path=(toolkit:ContentAttached.PathVerticalAlignment), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Data="{Binding Path=(toolkit:ContentAttached.Path), RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Fill="{Binding Foreground, RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Stretch="{Binding Path=(toolkit:ContentAttached.PathStretch), RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+
+                                <TextBlock Margin="{TemplateBinding Padding}"
+                                           HorizontalAlignment="Left"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           Text="{Binding DisplayName}" />
+                            </StackPanel>
+                        </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="border" Property="Visibility" Value="Visible"/>
-                            <Setter Property="Foreground" Value="{StaticResource MingQing}"/>
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource SelectedBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="Transparent" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
 
     <!--  左侧主菜单列表  -->
