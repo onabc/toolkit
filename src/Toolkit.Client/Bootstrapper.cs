@@ -52,7 +52,7 @@ namespace Toolkit.Client
                 .EnableClassInterceptors();
 
             //注册MediatR
-            builder.RegisterMediatR(typeof(Test1Notification), typeof(Test2Notification));
+            builder.RegisterMediatR(typeof(ClipboardNotification)/*, typeof(Test1Notification)*/);
 
             //从appsettings.json读取serilog配置
             builder.RegisterSerilogFromConfiguration().SingleInstance();

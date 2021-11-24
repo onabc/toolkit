@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MediatR;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using ReactiveUI;
@@ -6,12 +7,14 @@ using Refit;
 using System;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
 namespace Toolkit.Client
 {
-    public class TranslatorViewModel : Screen, IDisplayModule
+    public class TranslatorViewModel : Screen, IDisplayModule, INotificationHandler<ClipboardNotification>
     {
         private BaduTranslatorConfig baduTranslatorConfig;
 
@@ -75,6 +78,15 @@ namespace Toolkit.Client
                 .SubscribeOn(RxApp.MainThreadScheduler)
                 .Select(x => string.Join(Environment.NewLine, x.Results.Select(r => r.Dst)))
                 .BindTo(this, x => x.ResultString);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="notification"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task Handle(ClipboardNotification notification, CancellationToken cancellationToken)
+        {
         }
     }
 }
