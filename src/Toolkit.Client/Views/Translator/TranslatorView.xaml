@@ -14,8 +14,11 @@
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <UniformGrid MinWidth="300" HorizontalAlignment="Right">
-            <toolkit:MetroCheckBox Content="自动粘贴" Foreground="#6657EF" Cursor="Hand" />
-            <Button x:Name="Translate" Padding="25,5"
+            <toolkit:MetroCheckBox Content="自动粘贴"
+                                   Cursor="Hand"
+                                   Foreground="#6657EF" />
+            <Button x:Name="Translate"
+                    Padding="25,5"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     toolkit:BorderAttached.CornerRadius="8"
@@ -29,13 +32,19 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <toolkit:MetroTextBox Text="{Binding QueryString}" Margin="5" TextWrapping="Wrap"
+            <toolkit:MetroTextBox Margin="5"
+                                  Padding="8"
                                   BorderBrush="{StaticResource GradualBlue}"
                                   ShowClear="Visible"
+                                  Text="{Binding QueryString}"
+                                  TextWrapping="Wrap"
                                   Watermark="请输入要翻译的文字" />
             <toolkit:MetroTextBox Grid.Column="1"
                                   Margin="5"
-                                  BorderBrush="{StaticResource GradualBlue}" />
+                                  Padding="8"
+                                  BorderBrush="{StaticResource GradualBlue}"
+                                  Text="{Binding ResultString}"
+                                  TextWrapping="Wrap" />
         </Grid>
     </Grid>
 </UserControl>

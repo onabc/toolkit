@@ -131,6 +131,7 @@
                                 <ScrollViewer x:Name="PART_ContentHost"
                                               Grid.Column="1"
                                               Margin="5"
+                                              Padding="{TemplateBinding Padding}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               Focusable="false"
                                               HorizontalScrollBarVisibility="Hidden"
