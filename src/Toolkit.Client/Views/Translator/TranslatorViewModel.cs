@@ -14,7 +14,7 @@ using System.Windows.Media;
 
 namespace Toolkit.Client
 {
-    public class TranslatorViewModel : Screen, IDisplayModule, INotificationHandler<ClipboardNotification>
+    public class TranslatorViewModel : Screen, IDisplayModule
     {
         private BaduTranslatorConfig baduTranslatorConfig;
 
@@ -78,15 +78,6 @@ namespace Toolkit.Client
                 .SubscribeOn(RxApp.MainThreadScheduler)
                 .Select(x => string.Join(Environment.NewLine, x.Results.Select(r => r.Dst)))
                 .BindTo(this, x => x.ResultString);
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="notification"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public async Task Handle(ClipboardNotification notification, CancellationToken cancellationToken)
-        {
         }
     }
 }
